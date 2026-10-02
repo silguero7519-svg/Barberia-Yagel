@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAGEL BARBER | Cortes premium</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            300: '#FDF0A6',
+                            400: '#F3E068',
+                            500: '#C9A227',
+                            600: '#AA8828',
+                            700: '#80631A',
+                        },
+                        darkbg: '#0B0B0C',
+                        darkcard: '#141416',
+                        darkaccent: '#1F1F23'
+                    },
+                    fontFamily: {
+                        heading: ['Oswald', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B0B0C;
+            color: #E4E4E7;
+        }
+        .font-heading {
+            font-family: 'Oswald', sans-serif;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #E5C766 0%, #C9A227 50%, #997B1E 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-glow {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+        }
+        .gold-glow-hover:hover {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0B0C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27272A;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-gold-500 selection:text-black">
+
+    <header class="sticky top-0 z-40 bg-black/80 backdrop-blur-md border-b border-gold-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo Yagel -->
+            <a href="#inicio" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-gold-600 via-gold-400 to-gold-300 flex items-center justify-center text-black font-bold text-xl shadow-lg group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-heading text-2xl tracking-widest text-white uppercase group-hover:text-gold-400 transition-colors">YAGEL</span>
+                    <span class="text-[10px] text-gold-500 font-semibold tracking-widest uppercase -mt-1">BARBER STUDIO</span>
+                </div>
+            </a>
+
+            <!-- Menú de Navegación -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-zinc-300">
+                <a href="#inicio" class="hover:text-gold-400 transition-colors">Inicio</a>
+                <a href="#servicios" class="hover:text-gold-400 transition-colors">Servicios</a>
+                <a href="#galeria" class="hover:text-gold-400 transition-colors">Cortes & Estilo</a>
+                <a href="#reserva" class="hover:text-gold-400 transition-colors">Reservar Turno</a>
+            </nav>
+
+            <!-- Acciones públicas -->
+            <div class="flex items-center gap-4">
+                <a href="#reserva" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-black bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-300 hover:to-gold-500 transition-all shadow-md gold-glow-hover active:scale-95">
+                    <i class="fa-solid fa-calendar-check text-sm"></i> Reservar
+                </a>
+                
+                <!-- Menú Móvil Hamburger -->
+                <button id="mobileMenuBtn" class="md:hidden text-zinc-300 hover:text-gold-400 text-xl p-2">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobileMenu" class="hidden md:hidden bg-darkcard border-b border-gold-500/20 px-6 py-4 space-y-3">
+            <a href="#inicio" class="block py-2 text-zinc-200 hover:text-gold-400">Inicio</a>
+            <a href="#servicios" class="block py-2 text-zinc-200 hover:text-gold-400">Servicios</a>
+            <a href="#galeria" class="block py-2 text-zinc-200 hover:text-gold-400">Cortes & Estilo</a>
+            <a href="#reserva" class="block py-2 text-gold-400 font-bold">Reservar Turno</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <section id="inicio" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden border-b border-gold-500/20">
+            <!-- Imagen de Fondo / Banner Tributo Notorious B.I.G. -->
+            <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat filter brightness-50 contrast-125" 
+                 style="background-image: url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1920');">
+            </div>
+            <!-- Overlay Gradiente Oscuro con tinte de humo y sombras -->
+            <div class="absolute inset-0 z-0 bg-gradient-to-t from-darkbg via-darkbg/80 to-black/70"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16 text-center lg:text-left grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Columna Texto Hero -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold-500/40 bg-black/60 backdrop-blur-md">
+                        <i class="fa-solid fa-crown text-gold-400 text-xs"></i>
+                        <span class="text-xs font-semibold tracking-widest text-gold-300 uppercase">GROOMING DE ALTA GAMA</span>
+                    </div>
+
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-heading uppercase tracking-tight text-white leading-none">
+                        ESTILO LEGENDARIO <br>
+                        <span class="gold-gradient-text">BARBERÍA YAGEL</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-zinc-300 max-w-2xl font-light italic leading-relaxed">
+                        El arte del grooming elevado a su máxima expresión. Técnica precisa, atención personalizada y una experiencia diseñada para vos.
+                    </p>
+
+                    <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#reserva" class="px-8 py-4 rounded-xl font-bold uppercase tracking-wider text-black bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 hover:scale-105 active:scale-95 transition-all shadow-xl gold-glow flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-scissors"></i> Reservar Mi Turno
+                        </a>
+                        <a href="#galeria" class="px-8 py-4 rounded-xl font-bold uppercase tracking-wider text-gold-400 border border-gold-500/50 hover:bg-gold-500/10 transition-all flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-photo-film"></i> Ver Trabajos
+                        </a>
+                    </div>
+
+                    <!-- Horarios Rápidos -->
+                    <div class="pt-6 border-t border-zinc-800/80 flex flex-wrap gap-6 justify-center lg:justify-start text-xs text-zinc-400">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-regular fa-clock text-gold-400 text-sm"></i>
+                            <span>Turno Mañana: <strong class="text-white">08:00 - 13:00 hs</strong></span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-moon text-gold-400 text-sm"></i>
+                            <span>Turno Tarde/Noche: <strong class="text-white">16:00 - 00:00 hs</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Retrato Notorious B.I.G. -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-gold-600 to-gold-400 rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
+                        <div class="relative rounded-2xl overflow-hidden bg-darkcard border border-gold-500/30 p-2 shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&q=80&w=800" 
+                                 alt="Notorious BIG Aesthetic Hip-Hop Barber" 
+                                 class="w-full h-[420px] object-cover rounded-xl filter contrast-125 grayscale hover:grayscale-0 transition-all duration-700">
+                            
+                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/80 to-transparent p-6 text-center">
+                                <span class="font-heading text-xl text-gold-400 tracking-widest uppercase block">EL ESTILO YAGEL</span>
+                                <p class="text-xs text-zinc-400 italic">Cortes premium. Precisión en cada detalle.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+                <section id="servicios" class="py-20 bg-darkcard/50 border-b border-gold-500/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="font-heading text-4xl sm:text-5xl uppercase tracking-wider text-white">
+                        MENÚ DE <span class="gold-gradient-text">SERVICIOS</span>
+                    </h2>
+                    <p class="mt-3 text-zinc-400 text-sm">
+                        Todos los turnos requieren una <span class="text-gold-400 font-bold">seña previa del 50%</span> mediante MercadoPago o Transferencia para ser confirmados.
+                    </p>
+                </div>
+
+                <div id="servicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Inyectado dinámicamente por JS -->
+                </div>
+            </div>
+        </section>
+
+        <section id="reserva" class="py-20 relative">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-12">
+                    <span class="text-xs font-bold uppercase tracking-widest text-gold-400 bg-gold-500/10 px-4 py-1.5 rounded-full border border-gold-500/20">
+                        Reserva Online 24/7
+                    </span>
+                    <h2 class="font-heading text-4xl sm:text-5xl uppercase tracking-wider text-white mt-4">
+                        RESERVA TU <span class="gold-gradient-text">TURNO</span>
+                    </h2>
+                    <p class="text-zinc-400 text-sm mt-2">
+                        Elige un horario disponible y abona la seña. Tu solicitud quedará pendiente hasta que el barbero verifique el comprobante.
+                    </p>
+                </div>
+
+                <!-- Formulario Card estilo Gold Dark -->
+                <div class="bg-darkcard rounded-3xl border border-gold-500/30 p-6 sm:p-10 shadow-2xl gold-glow">
+                    <form id="bookingForm" class="space-y-8">
+                        
+                                                <!-- PASO 1: Elegir Servicio -->
+                        <div>
+                            <label class="block text-sm font-bold uppercase tracking-wider text-gold-400 mb-3">
+                                1. Selecciona el Servicio
+                            </label>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="serviceOptions">
+                                <!-- Inyectado dinámicamente por JS -->
+                            </div>
+                        </div>
+
+                        <!-- PASO 2: Elegir Fecha y Turno (Mañana u Noche) -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="bookingDate" class="block text-sm font-bold uppercase tracking-wider text-gold-400 mb-2">
+                                    2. Fecha del Turno
+                                </label>
+                                <input type="date" id="bookingDate" required 
+                                       class="w-full px-4 py-3 rounded-xl bg-darkaccent border border-zinc-700 text-white focus:outline-none focus:border-gold-500 transition-all">
+                            </div>
+
+                            <div>
+                                <label for="bookingTime" class="block text-sm font-bold uppercase tracking-wider text-gold-400 mb-2">
+                                    3. Hora Disponible
+                                </label>
+                                <select id="bookingTime" required class="w-full px-4 py-3 rounded-xl bg-darkaccent border border-zinc-700 text-white focus:outline-none focus:border-gold-500 transition-all">
+                                    <option value="">-- Selecciona Horario --</option>
+                                    <optgroup label="☀️ Turno Mañana (08:00 - 13:00)">
+                                        <option value="08:00">08:00 hs</option>
+                                        <option value="09:00">09:00 hs</option>
+                                        <option value="10:00">10:00 hs</option>
+                                        <option value="11:00">11:00 hs</option>
+                                        <option value="12:00">12:00 hs</option>
+                                    </optgroup>
+                                    <optgroup label="🌙 Turno Tarde/Noche (16:00 - 00:00)">
+                                        <option value="16:00">16:00 hs</option>
+                                        <option value="17:00">17:00 hs</option>
+                                        <option value="18:00">18:00 hs</option>
+                                        <option value="19:00">19:00 hs</option>
+                                        <option value="20:00">20:00 hs</option>
+                                        <option value="21:00">21:00 hs</option>
+                                        <option value="22:00">22:00 hs</option>
+                                        <option value="23:00">23:00 hs</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- PASO 3: Datos del Cliente -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="clientName" class="block text-sm font-bold uppercase tracking-wider text-gold-400 mb-2">Nombre Completo</label>
+                                <input type="text" id="clientName" required placeholder="Ej. Carlos Gardel" 
+                                       class="w-full px-4 py-3 rounded-xl bg-darkaccent border border-zinc-700 text-white focus:outline-none focus:border-gold-500 transition-all">
+                            </div>
+                            <div>
+                                <label for="clientPhone" class="block text-sm font-bold uppercase tracking-wider text-gold-400 mb-2">Teléfono / WhatsApp</label>
+                                <input type="tel" id="clientPhone" required placeholder="Ej. +54 9 11 1234 5678" 
+                                       class="w-full px-4 py-3 rounded-xl bg-darkaccent border border-zinc-700 text-white focus:outline-none focus:border-gold-500 transition-all">
+                            </div>
+                        </div>
+
+                        <!-- PASO 4: Desglose de Pago (Seña del 50%) -->
+                        <div class="p-5 rounded-2xl bg-black/60 border border-gold-500/30 space-y-3">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-zinc-400">Valor Total del Servicio:</span>
+                                <span id="summaryTotal" class="font-bold text-white">$10.000</span>
+                            </div>
+                            <div class="flex justify-between text-base font-bold border-t border-zinc-800 pt-2">
+                                <span class="text-gold-400">Seña Requerida (50%):</span>
+                                <span id="summaryDeposit" class="text-gold-400 text-lg">$5.000</span>
+                            </div>
+                            <p class="text-[11px] text-zinc-400 leading-tight">
+                                <i class="fa-solid fa-circle-info text-gold-400 mr-1"></i>
+                                Para confirmar el turno debes transferir la seña. Luego del clic final te mostraremos el alias/CBU o link de MercadoPago para abonar.
+                            </p>
+                        </div>
+
+                        <!-- Botón Enviar Reserva -->
+                        <button type="submit" class="w-full py-4 rounded-xl font-bold uppercase tracking-wider text-black bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 hover:from-gold-300 hover:to-gold-500 active:scale-[0.98] transition-all shadow-xl gold-glow text-base">
+                            Siguiente: Abonar Seña (50%) <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria" class="py-20 bg-darkcard/30 border-t border-gold-500/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-gold-400">Portfolio Yagel</span>
+                        <h2 class="font-heading text-4xl sm:text-5xl uppercase tracking-wider text-white mt-1">
+                            FOTOS & <span class="gold-gradient-text">VIDEOS</span>
+                        </h2>
+                    </div>
+
+                    <!-- Enlaces Redes Sociales Oficiales del Barbero -->
+                    <div class="flex items-center gap-4">
+                        <a id="linkInstagram" href="#" target="_blank" class="w-11 h-11 rounded-xl bg-darkcard border border-gold-500/30 text-gold-400 hover:bg-gold-500 hover:text-black flex items-center justify-center text-xl transition-all">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a id="linkTikTok" href="#" target="_blank" class="w-11 h-11 rounded-xl bg-darkcard border border-gold-500/30 text-gold-400 hover:bg-gold-500 hover:text-black flex items-center justify-center text-xl transition-all">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a id="linkFacebook" href="#" target="_blank" class="w-11 h-11 rounded-xl bg-darkcard border border-gold-500/30 text-gold-400 hover:bg-gold-500 hover:text-black flex items-center justify-center text-xl transition-all">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contenedor dinámico de Trabajos -->
+                <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Elementos iniciales cargados desde JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Pago de Seña -->
+    <div id="paymentModal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-darkcard border border-gold-500/40 w-full max-w-lg rounded-3xl p-6 sm:p-8 relative gold-glow">
+            <button id="closePaymentModal" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-xl p-2">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-14 h-14 rounded-full bg-gold-500/20 border border-gold-500/40 text-gold-400 flex items-center justify-center text-2xl mx-auto mb-3">
+                    <i class="fa-solid fa-receipt"></i>
+                </div>
+                <h3 class="font-heading text-2xl uppercase tracking-wider text-white">Pago de Seña (50%)</h3>
+                <p class="text-xs text-zinc-400 mt-1">
+                    Para asegurar tu turno debes abonar <strong id="modalDepositAmount" class="text-gold-400">$0</strong>
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="p-4 rounded-xl bg-gold-500/10 border border-gold-500/30 text-center">
+                    <p class="text-xs text-zinc-300">Código de reserva</p>
+                    <strong id="bookingCode" class="text-gold-300 font-mono tracking-widest">—</strong>
+                    <div id="bookingQr" class="mx-auto mt-3 w-fit rounded-lg bg-white p-2" aria-label="QR de la reserva"></div>
+                    <p class="text-[10px] text-zinc-400 mt-2">Guarda este QR como referencia de tu solicitud.</p>
+                </div>
+                <div class="p-4 rounded-xl bg-darkaccent border border-zinc-700 text-sm text-zinc-300 leading-relaxed">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 mr-2"></i>
+                    Al continuar, WhatsApp abrirá un mensaje para el barbero con tu código y el importe de la seña. Te compartirá los datos de transferencia; envíale el comprobante en ese mismo chat. El turno queda pendiente hasta que se verifique el pago.
+                </div>
+            </div>
+
+                        <div class="mt-6 pt-4 border-t border-zinc-800 text-center">
+                <button id="confirmBookingFinalBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold text-sm uppercase tracking-wider shadow-lg hover:scale-[1.02] active:scale-95 transition-all">
+                    Continuar por WhatsApp <i class="fa-brands fa-whatsapp ml-1"></i>
+                </button>
+                <p class="text-[10px] text-zinc-500 mt-2">
+                    Serás redirigido para enviar el comprobante. El barbero confirmará tu turno al recibirlo.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Login Administrador -->
+    <div id="adminAuthModal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-darkcard border border-gold-500/40 w-full max-w-sm rounded-3xl p-6 sm:p-8 relative gold-glow text-center">
+            <button id="closeAdminAuthModal" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-xl p-2">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="w-14 h-14 rounded-full bg-gold-500/20 border border-gold-500/40 text-gold-400 flex items-center justify-center text-2xl mx-auto mb-4">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <h3 class="font-heading text-2xl uppercase tracking-wider text-white mb-1">Acceso Barbero</h3>
+            <p class="text-xs text-zinc-400 mb-6">Ingresa la clave para acceder al panel</p>
+            
+            <form id="adminAuthForm" class="space-y-4">
+                <div>
+                    <input type="password" id="adminPassInput" placeholder="••••" required
+                           class="w-full text-center tracking-widest text-xl font-bold px-4 py-3 rounded-xl bg-darkaccent border border-zinc-700 text-white focus:outline-none focus:border-gold-500 transition-all">
+                </div>
+                <p id="adminAuthError" class="hidden text-xs text-red-400 font-bold"><i class="fa-solid fa-circle-exclamation mr-1"></i> Contraseña incorrecta</p>
+                <button type="submit" class="w-full py-3.5 rounded-xl font-bold uppercase tracking-wider text-black bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-300 hover:to-gold-500 transition-all shadow-lg text-sm">
+                    Ingresar al Panel
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Reasignar Horario de Turno -->
+    <div id="editTurnoModal" class="hidden fixed inset-0 z-[60] bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-darkcard border border-gold-500/40 w-full max-w-md rounded-3xl p-6 relative gold-glow">
+            <button id="closeEditTurnoModal" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-xl p-2">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-xl bg-gold-500/20 text-gold-400 border border-gold-500/30 flex items-center justify-center text-lg font-bold">
+                    <i class="fa-solid fa-calendar-pen"></i>
+                </div>
+                <div>
+                    <h3 class="font-heading text-xl uppercase tracking-wider text-white">Reasignar Horario</h3>
+                    <p id="editTurnoClientName" class="text-xs text-gold-400 font-bold"></p>
+                </div>
+            </div>
+
+            <form id="editTurnoForm" class="space-y-4">
+                <input type="hidden" id="editTurnoIndex">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-zinc-400 mb-1">Nueva Fecha</label>
+                    <input type="date" id="editTurnoDate" required class="w-full px-3 py-2.5 rounded-xl bg-darkaccent border border-zinc-700 text-white text-xs">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-zinc-400 mb-1">Nuevo Horario</label>
+                    <select id="editTurnoTime" required class="w-full px-3 py-2.5 rounded-xl bg-darkaccent border border-zinc-700 text-white text-xs">
+                        <optgroup label="☀️ Turno Mañana">
+                            <option value="08:00">08:00 hs</option>
+                            <option value="09:00">09:00 hs</option>
+                            <option value="10:00">10:00 hs</option>
+                            <option value="11:00">11:00 hs</option>
+                            <option value="12:00">12:00 hs</option>
+                        </optgroup>
+                        <optgroup label="🌙 Turno Tarde/Noche">
+                            <option value="16:00">16:00 hs</option>
+                            <option value="17:00">17:00 hs</option>
+                            <option value="18:00">18:00 hs</option>
+                            <option value="19:00">19:00 hs</option>
+                            <option value="20:00">20:00 hs</option>
+                            <option value="21:00">21:00 hs</option>
+                            <option value="22:00">22:00 hs</option>
+                            <option value="23:00">23:00 hs</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <button type="submit" class="w-full py-3 rounded-xl font-bold uppercase tracking-wider text-black bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-300 transition-all text-xs">
+                    Guardar Nuevo Horario
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- PANEL ADMINISTRATIVO PRINCIPAL -->
+    <div id="adminModal" class="hidden fixed inset-0 z-50 bg-black/95 backdrop-blur-lg flex items-center justify-center p-2 sm:p-6 overflow-y-auto">
+        <div class="bg-darkcard border border-gold-500/40 w-full max-w-5xl rounded-3xl p-6 relative my-8 text-zinc-200">
+            <button id="closeAdminModal" class="absolute top-5 right-5 text-zinc-400 hover:text-white text-2xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-gold-500 text-black flex items-center justify-center font-bold text-xl">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div>
+                    <h3 class="font-heading text-2xl uppercase tracking-wider text-white">Panel Barbero Yagel</h3>
+                    <p class="text-xs text-zinc-400">Gestión de turnos, agenda interactiva, Whatsapp y pagos</p>
+                </div>
+            </div>
+
+            <!-- Pestañas del Admin -->
+            <div class="flex border-b border-zinc-800 gap-4 mb-6 overflow-x-auto text-sm font-semibold whitespace-nowrap">
+                <button class="admin-tab text-gold-400 border-b-2 border-gold-400 pb-2 px-2" data-tab="tabTurnos">
+                    <i class="fa-solid fa-list-check mr-1"></i> Lista de Turnos
+                </button>
+                                <button class="admin-tab text-zinc-400 hover:text-gold-400 pb-2 px-2" data-tab="tabAgenda">
+                    <i class="fa-solid fa-calendar-days mr-1"></i> Agenda Dinámica
+                </button>
+                <button class="admin-tab text-zinc-400 hover:text-gold-400 pb-2 px-2" data-tab="tabServiciosAdmin">
+                    <i class="fa-solid fa-tags mr-1"></i> Gestionar Servicios
+                </button>
+                <button class="admin-tab text-zinc-400 hover:text-gold-400 pb-2 px-2" data-tab="tabConfig">
+                    <i class="fa-brands fa-whatsapp mr-1"></i> Config WhatsApp & Pagos
+                </button>
+                <button class="admin-tab text-zinc-400 hover:text-gold-400 pb-2 px-2" data-tab="tabGaleria">
+                    <i class="fa-solid fa-images mr-1"></i> Subir Fotos/Videos
+                </button>
+                <button class="admin-tab text-zinc-400 hover:text-gold-400 pb-2 px-2" data-tab="tabRedes">
+                    <i class="fa-solid fa-share-nodes mr-1"></i> Vincular Redes
+                </button>
+            </div>
+
+            <!-- TAB 1: LISTA DE TURNOS CON BOTÓN REASIGNAR -->
+            <div id="tabTurnos" class="tab-content space-y-4">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-xs font-bold uppercase text-zinc-400">Reservas Registradas</span>
+                    <button id="clearTurnosBtn" class="text-xs text-gold-400 hover:underline">Actualizar reservas</button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-zinc-300">
+                        <thead class="bg-darkaccent text-gold-400 font-bold uppercase">
+                            <tr>
+                                <th class="p-3">Cliente</th>
+                                <th class="p-3">Servicio</th>
+                                <th class="p-3">Fecha y Hora</th>
+                                <th class="p-3">Seña (50%)</th>
+                                <th class="p-3">Estado</th>
+                                <th class="p-3 text-right">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="turnosTableBody" class="divide-y divide-zinc-800">
+                            <!-- Inyectado por JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB 2: AGENDA DINÁMICA (MES / SEMANA / DÍA) -->
+            <div id="tabAgenda" class="tab-content hidden space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-darkaccent border border-zinc-800">
+                    <div class="flex items-center gap-2">
+                        <button id="agendaPrevBtn" class="p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-gold-400 text-xs">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <span id="agendaCurrentTitle" class="font-heading text-lg text-white tracking-wide uppercase px-2"></span>
+                        <button id="agendaNextBtn" class="p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-gold-400 text-xs">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Botones Cambiar Modo de Vista -->
+                    <div class="flex items-center bg-black/60 p-1 rounded-xl border border-zinc-800 text-xs font-semibold">
+                        <button class="agenda-view-btn px-3 py-1.5 rounded-lg bg-gold-500 text-black font-bold" data-view="month">Mes</button>
+                        <button class="agenda-view-btn px-3 py-1.5 rounded-lg text-zinc-400 hover:text-white" data-view="week">Semana</button>
+                        <button class="agenda-view-btn px-3 py-1.5 rounded-lg text-zinc-400 hover:text-white" data-view="day">Día</button>
+                    </div>
+                </div>
+
+                                <!-- Modulo Renderizado de Agenda -->
+                <div id="agendaDisplay" class="bg-darkaccent/40 rounded-2xl border border-zinc-800/80 p-4">
+                    <!-- Se inyecta dinámicamente con JS -->
+                </div>
+            </div>
+
+            <!-- TAB: GESTIONAR SERVICIOS -->
+            <div id="tabServiciosAdmin" class="tab-content hidden space-y-6">
+                <form id="addServiceForm" class="p-4 rounded-xl bg-darkaccent border border-zinc-800 space-y-4">
+                    <span class="text-xs font-bold uppercase text-gold-400 block">Agregar Nuevo Servicio</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                        <input type="text" id="srvName" placeholder="Nombre (ej. Corte Junior)" required
+                               class="px-3 py-2 rounded-lg bg-darkcard border border-zinc-700 text-xs text-white">
+                        <input type="number" id="srvPrice" placeholder="Precio (ej. 15000)" required
+                               class="px-3 py-2 rounded-lg bg-darkcard border border-zinc-700 text-xs text-white">
+                        <input type="number" id="srvDuration" placeholder="Minutos (ej. 30)" required
+                               class="px-3 py-2 rounded-lg bg-darkcard border border-zinc-700 text-xs text-white">
+                        <select id="srvIcon" class="px-3 py-2 rounded-lg bg-darkcard border border-zinc-700 text-xs text-white">
+                            <option value="fa-scissors">Tijeras</option>
+                            <option value="fa-user-ninja">Barba/Ninja</option>
+                            <option value="fa-wand-magic-sparkles">Arte/Magia</option>
+                            <option value="fa-razor">Navaja</option>
+                            <option value="fa-sparkles">Limpieza</option>
+                        </select>
+                    </div>
+                    <textarea id="srvDesc" placeholder="Descripción breve del servicio..." rows="2" required
+                              class="w-full px-3 py-2 rounded-lg bg-darkcard border border-zinc-700 text-xs text-white"></textarea>
+                    <button type="submit" class="px-4 py-2 rounded-lg bg-gold-500 text-black font-bold text-xs">
+                        Crear Servicio
+                    </button>
+                </form>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-zinc-300">
+                        <thead class="bg-darkaccent text-gold-400 font-bold uppercase">
+                            <tr>
+                                <th class="p-3">Servicio</th>
+                                <th class="p-3">Precio</th>
+                                <th class="p-3">Duración</th>
+                                <th class="p-3 text-right">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminServicesTableBody" class="divide-y divide-zinc-800">
+                            <!-- Inyectado por JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+                        <!-- TAB 3: CONFIGURACIÓN WHATSAPP & PAGOS -->
+            <div id="tabConfig" class="tab-content hidden space-y-6">
+                    <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-400">
+                    <i class="fa-solid fa-lightbulb mr-1"></i> <strong>WhatsApp de reservas:</strong> se configura como variable BARBER_WHATSAPP en Cloudflare Pages para que sea compartido por todos los clientes.
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gold-400 mb-1">Número de WhatsApp Barbero</label>
+                        <input type="text" id="cfgBarberPhone" placeholder="Configurar en Cloudflare Pages" readonly
+                               class="w-full px-3 py-2 rounded-lg bg-darkaccent border border-zinc-700 text-xs text-white">
+                    </div>
+                </div>
+
+                <hr class="border-zinc-800">
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gold-400 mb-1">Titular Cuenta</label>
+                        <input type="text" id="cfgBankHolder" placeholder="Barbería Yagel" 
+                               class="w-full px-3 py-2 rounded-lg bg-darkaccent border border-zinc-700 text-xs text-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gold-400 mb-1">Alias de Pago</label>
+                        <input type="text" id="cfgBankAlias" placeholder="YAGEL.BARBER.MP" 
+                               class="w-full px-3 py-2 rounded-lg bg-darkaccent border border-zinc-700 text-xs text-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gold-400 mb-1">Link MercadoPago</label>
+                        <input type="text" id="cfgMpLink" placeholder="https://mpago.la/..." 
+                               class="w-full px-3 py-2 rounded-lg bg-darkaccent border border-zinc-700 text-xs text-white">
+                    </div>
+                </div>
+
+                <button id="saveConfigBtn" class="px-6 py-2.5 rounded-xl bg-gold-500 text-black font-bold text-xs uppercase tracking-wider hover:bg-gold-400">
+                    Guardar Configuración
+                </button>
+            </div>
+
+                        <!-- TAB 4: GALERÍA DE FOTOS Y VIDEOS -->
+                        <div id="tabGaleria" class="tab-content hidden space-y-4">
+                            <form id="addMediaForm" class="p-4 rounded-xl bg-darkaccent border border-zinc-800 space-y-3">
+                                <span class="text-xs font-bold uppercase text-gold-400 block">Agregar Nuevo Trabajo al Portafolio</span>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <input type="text" id="mediaTitle" placeholder="Título (ej. Skin Fade Degradado)" required
+                                           class="px-3 py-2 rounded-lg bg-darkcard border border-zinc-700 text-xs text-white">
+                                    <select id="mediaType" class="px-3 py-2 rounded-lg bg-darkcard border border-zinc-700 text-xs text-white">
+                                        <option value="image">Imagen / Foto</option>
+                                        <option value="video">Video (MP4 / Web)</option>
+                                    </select>
+                                </div>
+                    
+                                <div id="urlInputContainer" class="space-y-2">
+                                    <label class="block text-[10px] text-zinc-500 uppercase font-bold">Opción A: Pegar URL de imagen/video</label>
+                                    <input type="url" id="mediaUrl" placeholder="https://..." 
+                                           class="w-full px-3 py-2 rounded-lg bg-darkcard border border-zinc-700 text-xs text-white">
+                                </div>
+
+                                <div id="fileInputContainer" class="space-y-2">
+                                    <label class="block text-[10px] text-zinc-500 uppercase font-bold">Opción B: Subir desde dispositivo</label>
+                                    <input type="file" id="mediaFile" accept="image/*,video/*"
+                                           class="w-full text-xs text-zinc-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold-500 file:text-black hover:file:bg-gold-400 cursor-pointer">
+                                </div>
+
+                                <button type="submit" class="px-4 py-2 rounded-lg bg-gold-500 text-black font-bold text-xs w-full sm:w-auto">
+                                    Añadir a la Galería
+                                </button>
+                            </form>
+
+                            <hr class="border-zinc-800 my-6">
+
+                            <div class="space-y-3">
+                                <span class="text-xs font-bold uppercase text-zinc-400 block">Gestionar Galería Actual</span>
+                                <div id="adminGalleryList" class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                                    <!-- Inyectado por JS -->
+                                </div>
+                            </div>
+                        </div>
+
+            <!-- TAB 5: REDES SOCIALES -->
+            <div id="tabRedes" class="tab-content hidden space-y-4">
+                <div class="space-y-3 max-w-md">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-zinc-400 mb-1">Instagram URL</label>
+                        <input type="url" id="cfgInstagram" placeholder="https://instagram.com/yagel_barber" 
+                               class="w-full px-3 py-2 rounded-lg bg-darkaccent border border-zinc-700 text-xs text-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-zinc-400 mb-1">TikTok URL</label>
+                        <input type="url" id="cfgTikTok" placeholder="https://tiktok.com/@yagel_barber" 
+                               class="w-full px-3 py-2 rounded-lg bg-darkaccent border border-zinc-700 text-xs text-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-zinc-400 mb-1">Facebook URL</label>
+                        <input type="url" id="cfgFacebook" placeholder="https://facebook.com/yagelbarber" 
+                               class="w-full px-3 py-2 rounded-lg bg-darkaccent border border-zinc-700 text-xs text-white">
+                    </div>
+                    <button id="saveSocialsBtn" class="px-6 py-2.5 rounded-xl bg-gold-500 text-black font-bold text-xs uppercase">
+                        Guardar Redes
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="bg-black border-t border-gold-500/20 py-12 text-zinc-400 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <div class="flex justify-center items-center gap-2">
+                <i class="fa-solid fa-crown text-gold-400 text-lg"></i>
+                <span class="font-heading text-xl text-white tracking-widest uppercase">BARBERÍA YAGEL</span>
+            </div>
+            <p class="max-w-md mx-auto text-zinc-500">
+                El mejor estilo urbano con reserva digital, seña instantánea y atención personalizada.
+            </p>
+            <p>&copy; 2026 Barbería Yagel. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="hidden fixed bottom-6 right-6 px-6 py-4 rounded-xl bg-gold-500 text-black font-bold text-sm shadow-2xl z-[70] transition-all flex items-center gap-2">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMsg">Operación realizada con éxito</span>
+    </div>
+
+    <script>
+                // Estado por defecto guardado en LocalStorage
+                const defaultState = {
+                    config: {
+                        barberPhone: "",
+                        bankHolder: "Yagel Barbería Studio",
+                        bankAlias: "YAGEL.BARBER.MP",
+                        bankCBU: "0000003100087654321098",
+                        mpLink: "https://www.mercadopago.com.ar",
+                        instagram: "https://instagram.com",
+                        tikTok: "https://tiktok.com",
+                        facebook: "https://facebook.com"
+                    },
+                    services: [
+                        { id: 1, name: 'Corte Fade / Urbano', price: 18000, duration: 30, icon: 'fa-scissors', description: 'Degradados de alta precisión, lavado, perfilado y peinado profesional.' },
+                        { id: 2, name: 'Corte + Barba VIP', price: 25000, duration: 45, icon: 'fa-user-ninja', description: 'Corte completo + perfilado de barba con toalla caliente y vapor.' },
+                        { id: 3, name: 'Diseño Freestyle', price: 20000, duration: 40, icon: 'fa-wand-magic-sparkles', description: 'Diseños personalizados en navaja y líneas urbanas artísticas.' }
+                    ],
+                    gallery: [
+                { id: 1, title: 'Mid Fade con Navaja', type: 'image', url: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&q=80&w=600' },
+                { id: 2, title: 'Perfilado de Barba VIP', type: 'image', url: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=600' },
+                { id: 3, title: 'Corte Urbano + Freestyle', type: 'image', url: 'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&q=80&w=600' }
+            ],
+            turnos: []
+        };
+
+        let appState = JSON.parse(localStorage.getItem('yagel_barber_data')) || defaultState;
+        
+        // MIGRACIÓN: Asegurar que las nuevas llaves existan
+        if (!appState.services) appState.services = [...defaultState.services];
+        if (!appState.config) appState.config = {...defaultState.config};
+        if (!appState.config.barberPhone) appState.config.barberPhone = defaultState.config.barberPhone;
+        if (!appState.gallery) appState.gallery = [...defaultState.gallery];
+        if (!appState.turnos) appState.turnos = [];
+
+        let currentAgendaView = 'month'; // 'month', 'week', 'day'
+        let currentAgendaDate = new Date();
+
+        function saveState() {
+            localStorage.setItem('yagel_barber_data', JSON.stringify(appState));
+            renderAll();
+        }
+
+        const bookingForm = document.getElementById('bookingForm');
+        const paymentModal = document.getElementById('paymentModal');
+        const adminModal = document.getElementById('adminModal');
+        const editTurnoModal = document.getElementById('editTurnoModal');
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toastMsg');
+
+        let pendingBookingData = null;
+
+        function escapeHtml(value) {
+            return String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
+        }
+
+                window.onload = async function() {
+            renderAll();
+            setupEvents();
+            updateBookingSummary();
+            loadRemoteServices();
+            loadRemoteSettings();
+            const today = localDateString(new Date());
+            document.getElementById('bookingDate').setAttribute('min', today);
+            document.getElementById('bookingDate').value = today;
+            refreshAvailableTimes();
+            // Acceso del propietario: abrir el sitio con ?admin=1. No se muestra ningún acceso en la web pública.
+            if (new URLSearchParams(window.location.search).get('admin') === '1') {
+                try {
+                    const response = await fetch('/api/admin/session', { cache: 'no-store', credentials: 'same-origin' });
+                    const session = await response.json();
+                    if (session.authenticated) {
+                        await loadRemoteBookings();
+                        adminModal.classList.remove('hidden');
+                    } else {
+                        document.getElementById('adminAuthModal').classList.remove('hidden');
+                        document.getElementById('adminPassInput').focus();
+                    }
+                } catch {
+                    document.getElementById('adminAuthModal').classList.remove('hidden');
+                }
+            }
+        };
+
+        async function loadRemoteServices() {
+            try {
+                const response = await fetch('/api/services', { cache: 'no-store' });
+                if (!response.ok) return;
+                const data = await response.json();
+                if (!Array.isArray(data.services) || !data.services.length) return;
+                appState.services = data.services.map((service, index) => ({
+                    ...service,
+                    icon: service.icon || defaultState.services[index]?.icon || 'fa-scissors',
+                    description: service.description || defaultState.services.find(item => item.id === service.id)?.description || ''
+                }));
+                renderAll();
+                updateBookingSummary();
+            } catch { /* El archivo local conserva la vista de demostración. */ }
+        }
+
+        async function loadRemoteSettings() {
+            try {
+                const response = await fetch('/api/settings', { cache: 'no-store' });
+                if (!response.ok) return;
+                const settings = await response.json();
+                appState.config.barberPhone = settings.barberWhatsApp || '';
+            } catch { /* No expone números de ejemplo como si fueran reales. */ }
+        }
+
+        async function loadRemoteBookings() {
+            const response = await fetch('/api/admin/bookings', { cache: 'no-store', credentials: 'same-origin' });
+            if (!response.ok) throw new Error('No se pudieron cargar los turnos.');
+            const data = await response.json();
+            appState.turnos = data.bookings || [];
+            renderAll();
+        }
+
+        function localDateString(date) {
+            const local = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+            return local.toISOString().slice(0, 10);
+        }
+
+        async function refreshAvailableTimes() {
+            const select = document.getElementById('bookingTime');
+            const dateInput = document.getElementById('bookingDate');
+            if (!select || !dateInput) return;
+            const selected = select.value;
+            let occupied = [];
+            try {
+                const response = await fetch(`/api/availability?date=${encodeURIComponent(dateInput.value)}`, { cache: 'no-store' });
+                if (!response.ok) throw new Error('availability unavailable');
+                occupied = (await response.json()).occupied || [];
+            } catch {
+                occupied = appState.turnos.filter(t => t.date === dateInput.value).map(t => t.time);
+            }
+            select.querySelectorAll('option[value]:not([value=""])').forEach(option => {
+                const isOccupied = occupied.includes(option.value);
+                option.disabled = isOccupied;
+                option.textContent = `${option.value} hs${isOccupied ? ' · Reservado' : ''}`;
+            });
+            if (select.selectedOptions[0]?.disabled) select.value = '';
+            else if (selected) select.value = selected;
+        }
+
+        function updateBookingSummary() {
+            const selected = document.querySelector('input[name="service"]:checked');
+            if (!selected) return;
+            
+            const price = parseInt(selected.getAttribute('data-price'));
+            const deposit = price * 0.5;
+            
+            document.getElementById('summaryTotal').innerText = `$${price.toLocaleString()}`;
+            document.getElementById('summaryDeposit').innerText = `$${deposit.toLocaleString()}`;
+            
+            // Estilos de selección visual
+            document.querySelectorAll('.service-card').forEach(card => {
+                card.classList.remove('border-gold-500', 'bg-gold-500/10');
+                card.classList.add('border-zinc-700');
+            });
+            const activeCard = selected.closest('.service-card');
+            activeCard.classList.remove('border-zinc-700');
+            activeCard.classList.add('border-gold-500', 'bg-gold-500/10');
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                function renderAll() {
+            // Renderizar Lista de Servicios (Sección Pública)
+            const servicesGrid = document.getElementById('servicesGrid');
+            if (servicesGrid && appState.services) {
+                servicesGrid.innerHTML = appState.services.map(s => `
+                    <div class="p-8 rounded-2xl bg-darkcard border border-gold-500/20 hover:border-gold-500/60 transition-all hover:-translate-y-1 gold-glow-hover flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center text-2xl border border-gold-500/30">
+                                    <i class="fa-solid ${s.icon || 'fa-scissors'}"></i>
+                                </div>
+                                <span class="text-2xl font-heading font-bold text-gold-400">$${s.price.toLocaleString()}</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">${escapeHtml(s.name)}</h3>
+                            <p class="text-zinc-400 text-sm leading-relaxed mb-4">${escapeHtml(s.description || '')}</p>
+                        </div>
+                        <div class="pt-4 border-t border-zinc-800/80 flex items-center justify-between text-xs text-zinc-500">
+                            <span><i class="fa-regular fa-clock mr-1"></i> ${s.duration} min</span>
+                            <span class="text-gold-400/90 font-medium">Seña: $${(s.price * 0.5).toLocaleString()}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Renderizar Opciones de Reserva (Formulario)
+            const serviceOptions = document.getElementById('serviceOptions');
+            if (serviceOptions && appState.services) {
+                serviceOptions.innerHTML = appState.services.map((s, idx) => `
+                    <label class="service-card cursor-pointer p-4 rounded-xl bg-darkaccent border border-zinc-700 hover:border-gold-500 transition-all flex flex-col justify-between">
+                        <input type="radio" name="service" value="${s.id}" data-name="${escapeHtml(s.name)}" data-price="${s.price}" class="hidden" ${idx === 0 ? 'checked' : ''}>
+                        <div>
+                            <span class="font-bold block text-white">${escapeHtml(s.name)}</span>
+                            <span class="text-xs text-zinc-400">${s.duration} minutos</span>
+                        </div>
+                        <span class="text-gold-400 font-bold text-sm mt-2 block">$${s.price.toLocaleString()}</span>
+                    </label>
+                `).join('');
+                
+                // Vincular eventos a los nuevos elementos del radio
+                document.querySelectorAll('input[name="service"]').forEach(input => {
+                    input.addEventListener('change', updateBookingSummary);
+                });
+                refreshAvailableTimes();
+            }
+
+            // Renderizar Tabla de Servicios (Admin)
+            const adminServicesBody = document.getElementById('adminServicesTableBody');
+            if (adminServicesBody && appState.services) {
+                adminServicesBody.innerHTML = appState.services.map((s, index) => `
+                    <tr class="hover:bg-darkaccent">
+                        <td class="p-3">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid ${s.icon || 'fa-scissors'} text-gold-400"></i>
+                                <span class="font-bold text-white">${escapeHtml(s.name)}</span>
+                            </div>
+                        </td>
+                        <td class="p-3 font-bold text-gold-300">$${s.price.toLocaleString()}</td>
+                        <td class="p-3 text-zinc-400">${s.duration} min</td>
+                        <td class="p-3 text-right">
+                            <button onclick="deleteService(${index})" class="px-2 py-1 bg-red-500/20 text-red-400 rounded text-[10px]"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+
+            // Render Galería ...
+            const galleryGrid = document.getElementById('galleryGrid');
+            if (galleryGrid && appState.gallery) {
+                galleryGrid.innerHTML = appState.gallery.map(item => `
+                    <div class="rounded-2xl overflow-hidden bg-darkcard border border-gold-500/20 group hover:border-gold-500 transition-all">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="${escapeHtml(item.url)}" alt="${escapeHtml(item.title)}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-80"></div>
+                            <span class="absolute bottom-3 left-4 font-bold text-white text-sm">${escapeHtml(item.title)}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Redes Sociales ...
+            if (appState.config) {
+                const ig = document.getElementById('linkInstagram');
+                const tk = document.getElementById('linkTikTok');
+                const fb = document.getElementById('linkFacebook');
+                if (ig) ig.href = appState.config.instagram || '#';
+                if (tk) tk.href = appState.config.tikTok || '#';
+                if (fb) fb.href = appState.config.facebook || '#';
+
+                const bh = document.getElementById('bankHolder');
+                const ba = document.getElementById('bankAlias');
+                const mp = document.getElementById('mpPayBtn');
+                if (bh) bh.innerText = appState.config.bankHolder || '';
+                if (ba) ba.innerText = appState.config.bankAlias || '';
+                if (mp) mp.href = appState.config.mpLink || '#';
+
+                const cbp = document.getElementById('cfgBarberPhone');
+                const cbh = document.getElementById('cfgBankHolder');
+                const cba = document.getElementById('cfgBankAlias');
+                const cml = document.getElementById('cfgMpLink');
+                const cig = document.getElementById('cfgInstagram');
+                const ctk = document.getElementById('cfgTikTok');
+                const cfb = document.getElementById('cfgFacebook');
+
+                if (cbp) cbp.value = appState.config.barberPhone || '';
+                if (cbh) cbh.value = appState.config.bankHolder || '';
+                if (cba) cba.value = appState.config.bankAlias || '';
+                if (cml) cml.value = appState.config.mpLink || '';
+                if (cig) cig.value = appState.config.instagram || '';
+                if (ctk) ctk.value = appState.config.tikTok || '';
+                if (cfb) cfb.value = appState.config.facebook || '';
+            }
+
+            // Galería en Admin ...
+            const adminGalleryList = document.getElementById('adminGalleryList');
+            if (adminGalleryList && appState.gallery) {
+                adminGalleryList.innerHTML = appState.gallery.map((item, index) => `
+                    <div class="relative group rounded-lg overflow-hidden border border-zinc-800 aspect-square">
+                        <img src="${escapeHtml(item.url)}" class="w-full h-full object-cover">
+                        <button onclick="deleteGalleryItem(${index})" class="absolute top-1 right-1 w-6 h-6 bg-red-500 text-white rounded-md text-[10px] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+
+            // Tabla de Turnos ...
+            const turnosBody = document.getElementById('turnosTableBody');
+            if (turnosBody) {
+                if (!appState.turnos || appState.turnos.length === 0) {
+                    turnosBody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-zinc-500">No hay reservas registradas aún.</td></tr>`;
+                } else {
+                    turnosBody.innerHTML = appState.turnos.map((t, index) => `
+                        <tr class="hover:bg-darkaccent">
+                            <td class="p-3 font-bold text-white">${escapeHtml(t.clientName)}<br><span class="text-[10px] text-zinc-400 font-normal">${escapeHtml(t.clientPhone)}</span></td>
+                            <td class="p-3">${escapeHtml(t.service)}</td>
+                            <td class="p-3 font-semibold text-gold-300">${t.date}<br><span class="text-white">${t.time} hs</span></td>
+                            <td class="p-3 font-bold text-gold-400">$${t.deposit}</td>
+                            <td class="p-3">
+                                <span class="px-2 py-1 rounded text-[10px] font-bold ${t.status === 'Confirmado' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'}">
+                                    ${t.status}
+                                </span>
+                            </td>
+                            <td class="p-3 text-right space-x-1">
+                                ${t.status === 'Pendiente' ? `<button onclick="confirmTurno(${index})" class="px-2 py-1 bg-emerald-500 text-black font-bold rounded text-[10px]">Confirmar</button>` : ''}
+                                <button onclick="openEditTurno(${index})" title="Reasignar Fecha/Hora" class="px-2 py-1 bg-gold-500/20 text-gold-400 hover:bg-gold-500 hover:text-black font-bold rounded text-[10px] transition-all">
+                                    <i class="fa-solid fa-pen-to-square mr-1"></i>Reasignar
+                                </button>
+                                <button onclick="deleteTurno(${index})" class="px-2 py-1 bg-red-500/20 text-red-400 rounded text-[10px]"><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    `).join('');
+                }
+            }
+
+            renderAgendaView();
+        }
+
+        // RENDERIZADO DE LA AGENDA DINÁMICA (MES / SEMANA / DÍA)
+        function renderAgendaView() {
+            const display = document.getElementById('agendaDisplay');
+            const title = document.getElementById('agendaCurrentTitle');
+            const date = currentAgendaDate;
+
+            if (currentAgendaView === 'month') {
+                const year = date.getFullYear();
+                const month = date.getMonth();
+                const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+                title.innerText = `${monthNames[month]} ${year}`;
+
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+                let html = `<div class="grid grid-cols-7 gap-2 text-center text-xs font-bold text-gold-400 mb-2">
+                    <div>Dom</div><div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div>
+                </div><div class="grid grid-cols-7 gap-2">`;
+
+                for (let i = 0; i < firstDay; i++) {
+                    html += `<div class="h-20 rounded-xl bg-darkcard/30 border border-zinc-800/40 opacity-30"></div>`;
+                }
+
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const monthStr = String(month + 1).padStart(2, '0');
+                    const dayStr = String(day).padStart(2, '0');
+                    const dateFormatted = `${year}-${monthStr}-${dayStr}`;
+
+                    const dayTurnos = appState.turnos.filter(t => t.date === dateFormatted);
+
+                    html += `
+                        <div class="h-24 p-1.5 rounded-xl bg-darkcard border border-zinc-800 flex flex-col justify-between overflow-hidden">
+                            <div class="flex justify-between items-center text-[10px]">
+                                <span class="font-bold text-zinc-300">${day}</span>
+                                ${dayTurnos.length > 0 ? `<span class="px-1.5 py-0.5 rounded-full bg-gold-500 text-black font-extrabold text-[9px]">${dayTurnos.length}</span>` : ''}
+                            </div>
+                            <div class="space-y-1 overflow-y-auto max-h-16">
+                                ${dayTurnos.map(t => `
+                                    <div class="p-1 rounded bg-gold-500/10 border border-gold-500/30 text-[9px] truncate text-gold-300" title="${escapeHtml(t.clientName)} (${escapeHtml(t.time)} hs)">
+                                        <strong>${escapeHtml(t.time)}</strong> ${escapeHtml(t.clientName.split(' ')[0])}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+                html += `</div>`;
+                display.innerHTML = html;
+
+            } else if (currentAgendaView === 'day') {
+                const dateStr = localDateString(date);
+                title.innerText = `Día: ${dateStr}`;
+
+                const dayTurnos = appState.turnos.filter(t => t.date === dateStr);
+                const hours = ["08:00", "09:00", "10:00", "11:00", "12:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"];
+
+                display.innerHTML = `
+                    <div class="space-y-2">
+                        ${hours.map(h => {
+                            const turno = dayTurnos.find(t => t.time === h);
+                            return `
+                                <div class="p-3 rounded-xl bg-darkcard border border-zinc-800 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <span class="font-mono text-sm font-bold text-gold-400 w-16">${h} hs</span>
+                                        ${turno ? `
+                                            <div>
+                                                <p class="text-xs font-bold text-white">${turno.clientName} (${turno.clientPhone})</p>
+                                                <p class="text-[10px] text-zinc-400">${turno.service} - Seña: $${turno.deposit}</p>
+                                            </div>
+                                        ` : `<span class="text-xs text-zinc-600 italic">Horario Libre</span>`}
+                                    </div>
+                                    ${turno ? `<span class="px-2 py-1 rounded text-[10px] font-bold ${turno.status === 'Confirmado' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-amber-500/20 text-amber-400'}">${turno.status}</span>` : ''}
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+            } else { // 'week'
+                const start = new Date(date);
+                start.setDate(start.getDate() - start.getDay());
+                title.innerText = `Semana del ${localDateString(start)}`;
+                display.innerHTML = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-3">${Array.from({length: 7}, (_, i) => {
+                    const day = new Date(start); day.setDate(start.getDate() + i);
+                    const dayStr = localDateString(day);
+                    const items = appState.turnos.filter(t => t.date === dayStr).sort((a,b) => a.time.localeCompare(b.time));
+                    return `<div class="min-h-32 rounded-xl bg-darkcard border border-zinc-800 p-3"><p class="text-xs font-bold text-gold-400 mb-2">${day.toLocaleDateString('es-AR',{weekday:'short',day:'2-digit',month:'2-digit'})}</p>${items.length ? items.map(t=>`<div class="mb-2 rounded-lg bg-gold-500/10 border border-gold-500/20 p-2 text-[10px]"><strong class="text-gold-300">${escapeHtml(t.time)}</strong><span class="block text-white">${escapeHtml(t.clientName)}</span><span class="text-zinc-400">${escapeHtml(t.service)}</span></div>`).join('') : '<span class="text-[10px] text-zinc-600">Sin reservas</span>'}</div>`;
+                }).join('')}</div>`;
+            }
+        }
+
+                function setupEvents() {
+            // Modales
+            const closePaymentModal = document.getElementById('closePaymentModal');
+            const closeAdminAuthModal = document.getElementById('closeAdminAuthModal');
+            const closeAdminModal = document.getElementById('closeAdminModal');
+            const closeEditTurnoModal = document.getElementById('closeEditTurnoModal');
+
+            if (closePaymentModal) closePaymentModal.onclick = () => paymentModal.classList.add('hidden');
+            if (closeAdminAuthModal) closeAdminAuthModal.onclick = () => document.getElementById('adminAuthModal').classList.add('hidden');
+            if (closeAdminModal) closeAdminModal.onclick = async () => {
+                try { await fetch('/api/admin/logout', { method: 'POST', credentials: 'same-origin' }); } catch { /* Cierra el panel aun si la red no responde. */ }
+                adminModal.classList.add('hidden');
+            };
+            if (closeEditTurnoModal) closeEditTurnoModal.onclick = () => editTurnoModal.classList.add('hidden');
+
+            const adminAuthForm = document.getElementById('adminAuthForm');
+            if (adminAuthForm) {
+                adminAuthForm.onsubmit = async (e) => {
+                    e.preventDefault();
+                    const pass = document.getElementById('adminPassInput').value.trim();
+                    try {
+                        const response = await fetch('/api/admin/login', {
+                            method: 'POST', credentials: 'same-origin',
+                            headers: { 'content-type': 'application/json' },
+                            body: JSON.stringify({ password: pass })
+                        });
+                        if (response.ok) {
+                            await loadRemoteBookings();
+                            document.getElementById('adminAuthModal').classList.add('hidden');
+                            adminModal.classList.remove('hidden');
+                            showToast('¡Bienvenido al Panel de Control!');
+                        } else {
+                            const data = await response.json();
+                            document.getElementById('adminAuthError').innerText = data.error || 'No se pudo iniciar sesión';
+                            document.getElementById('adminAuthError').classList.remove('hidden');
+                        }
+                    } catch {
+                        document.getElementById('adminAuthError').innerText = 'Panel sin conexión. Publica el sitio y configura Cloudflare.';
+                        document.getElementById('adminAuthError').classList.remove('hidden');
+                    }
+                };
+            }
+
+            // Formulario Reserva ...
+            const sOptions = document.getElementById('serviceOptions');
+            if (sOptions) {
+                sOptions.addEventListener('change', updateBookingSummary);
+            }
+
+            document.getElementById('bookingDate')?.addEventListener('change', refreshAvailableTimes);
+            document.getElementById('bookingTime')?.addEventListener('focus', refreshAvailableTimes);
+
+            if (bookingForm) {
+                bookingForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const selectedService = document.querySelector('input[name="service"]:checked');
+                    if (!selectedService) return;
+
+                    const date = document.getElementById('bookingDate').value;
+                    const time = document.getElementById('bookingTime').value;
+                    try {
+                        const response = await fetch('/api/bookings', {
+                            method: 'POST', headers: { 'content-type': 'application/json' },
+                            body: JSON.stringify({
+                                serviceId: Number(selectedService.value), date, time,
+                                clientName: document.getElementById('clientName').value,
+                                clientPhone: document.getElementById('clientPhone').value
+                            })
+                        });
+                        const data = await response.json();
+                        if (!response.ok) {
+                            showToast(data.error || 'No se pudo registrar la solicitud.');
+                            await refreshAvailableTimes();
+                            return;
+                        }
+                        pendingBookingData = {
+                            id: data.id, service: data.service, price: data.price, deposit: data.deposit,
+                            date: data.date, time: data.time,
+                            clientName: document.getElementById('clientName').value,
+                            clientPhone: document.getElementById('clientPhone').value, status: 'Pendiente'
+                        };
+                        document.getElementById('modalDepositAmount').innerText = `$${data.deposit.toLocaleString('es-AR')}`;
+                        document.getElementById('bookingCode').innerText = data.code;
+                        const qr = document.getElementById('bookingQr');
+                        qr.innerHTML = '';
+                        if (window.QRCode) new QRCode(qr, { text: JSON.stringify({ code: data.code, date, time, service: data.service }), width: 112, height: 112, colorDark: '#111111', colorLight: '#ffffff' });
+                        paymentModal.classList.remove('hidden');
+                    } catch {
+                        showToast('No hay conexión con el sistema de reservas. Intenta más tarde.');
+                    }
+                });
+            }
+
+            // Enviar a WhatsApp ...
+            const finalBtn = document.getElementById('confirmBookingFinalBtn');
+            if (finalBtn) {
+                finalBtn.onclick = () => {
+                    if (!pendingBookingData) return;
+                    if (!sendWhatsAppNotification(pendingBookingData)) return;
+                    paymentModal.classList.add('hidden');
+                    bookingForm.reset();
+                    refreshAvailableTimes();
+                    showToast("Solicitud registrada. Continúa en WhatsApp para enviar el comprobante.");
+                };
+            }
+
+            // Reasignar Turno ...
+            const editTForm = document.getElementById('editTurnoForm');
+            if (editTForm) {
+                editTForm.onsubmit = async (e) => {
+                    e.preventDefault();
+                    const index = document.getElementById('editTurnoIndex').value;
+                    const item = appState.turnos[index];
+                    try {
+                        const response = await fetch(`/api/admin/bookings/${encodeURIComponent(item.id)}`, {
+                            method: 'PATCH', credentials: 'same-origin', headers: { 'content-type': 'application/json' },
+                            body: JSON.stringify({ date: document.getElementById('editTurnoDate').value, time: document.getElementById('editTurnoTime').value })
+                        });
+                        const result = await response.json();
+                        if (!response.ok) throw new Error(result.error || 'No se pudo mover el turno.');
+                        await loadRemoteBookings();
+                    } catch (error) {
+                        showToast(error.message);
+                        return;
+                    }
+                    editTurnoModal.classList.add('hidden');
+                    showToast("Horario del turno reasignado con éxito");
+                };
+            }
+
+            // Pestañas Admin ...
+            document.querySelectorAll('.admin-tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.admin-tab').forEach(t => {
+                        t.classList.remove('text-gold-400', 'border-b-2', 'border-gold-400');
+                        t.classList.add('text-zinc-400');
+                    });
+                    tab.classList.add('text-gold-400', 'border-b-2', 'border-gold-400');
+                    tab.classList.remove('text-zinc-400');
+
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+                    const content = document.getElementById(tab.dataset.tab);
+                    if (content) content.classList.remove('hidden');
+                });
+            });
+
+            // Vistas Agenda ...
+            document.querySelectorAll('.agenda-view-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.agenda-view-btn').forEach(b => {
+                        b.classList.remove('bg-gold-500', 'text-black', 'font-bold');
+                        b.classList.add('text-zinc-400');
+                    });
+                    btn.classList.add('bg-gold-500', 'text-black', 'font-bold');
+                    btn.classList.remove('text-zinc-400');
+                    currentAgendaView = btn.dataset.view;
+                    renderAgendaView();
+                });
+            });
+
+            const prevBtn = document.getElementById('agendaPrevBtn');
+            const nextBtn = document.getElementById('agendaNextBtn');
+            if (prevBtn) {
+                prevBtn.onclick = () => {
+                    if (currentAgendaView === 'month') currentAgendaDate.setMonth(currentAgendaDate.getMonth() - 1);
+                    else currentAgendaDate.setDate(currentAgendaDate.getDate() - 7);
+                    renderAgendaView();
+                };
+            }
+            if (nextBtn) {
+                nextBtn.onclick = () => {
+                    if (currentAgendaView === 'month') currentAgendaDate.setMonth(currentAgendaDate.getMonth() + 1);
+                    else currentAgendaDate.setDate(currentAgendaDate.getDate() + 7);
+                    renderAgendaView();
+                };
+            }
+
+            // Guardar Configs ...
+            const saveCfgBtn = document.getElementById('saveConfigBtn');
+            if (saveCfgBtn) {
+                saveCfgBtn.onclick = () => {
+                    appState.config.barberPhone = document.getElementById('cfgBarberPhone').value.trim();
+                    appState.config.bankHolder = document.getElementById('cfgBankHolder').value.trim();
+                    appState.config.bankAlias = document.getElementById('cfgBankAlias').value.trim();
+                    appState.config.mpLink = document.getElementById('cfgMpLink').value.trim();
+                    saveState();
+                    showToast("Configuración guardada correctamente");
+                };
+            }
+
+            const copyAliasBtn = document.getElementById('copyAliasBtn');
+            if (copyAliasBtn) {
+                copyAliasBtn.onclick = () => {
+                    navigator.clipboard.writeText(appState.config.bankAlias);
+                    showToast("Alias copiado al portapapeles!");
+                };
+            }
+
+            const saveSocBtn = document.getElementById('saveSocialsBtn');
+            if (saveSocBtn) {
+                saveSocBtn.onclick = () => {
+                    appState.config.instagram = document.getElementById('cfgInstagram').value.trim();
+                    appState.config.tikTok = document.getElementById('cfgTikTok').value.trim();
+                    appState.config.facebook = document.getElementById('cfgFacebook').value.trim();
+                    saveState();
+                    showToast("Redes sociales actualizadas");
+                };
+            }
+
+            // Manejo de Galería ...
+            const addMediaForm = document.getElementById('addMediaForm');
+            if (addMediaForm) {
+                addMediaForm.onsubmit = (e) => {
+                    e.preventDefault();
+                    const title = document.getElementById('mediaTitle').value.trim();
+                    const type = document.getElementById('mediaType').value;
+                    const urlInput = document.getElementById('mediaUrl').value.trim();
+                    const fileInput = document.getElementById('mediaFile');
+
+                    if (fileInput.files && fileInput.files[0]) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                            const newItem = {
+                                id: Date.now(),
+                                title: title,
+                                type: type,
+                                url: event.target.result
+                            };
+                            appState.gallery.unshift(newItem);
+                            saveState();
+                            addMediaForm.reset();
+                            showToast("Imagen subida y añadida a la galería");
+                        };
+                        reader.readAsDataURL(fileInput.files[0]);
+                    } else if (urlInput) {
+                        const newItem = {
+                            id: Date.now(),
+                            title: title,
+                            type: type,
+                            url: urlInput
+                        };
+                        appState.gallery.unshift(newItem);
+                        saveState();
+                        addMediaForm.reset();
+                        showToast("Enlace añadido a la galería");
+                    } else {
+                        alert("Por favor, selecciona un archivo o pega una URL.");
+                    }
+                };
+            }
+
+            const clearTBtn = document.getElementById('clearTurnosBtn');
+            if (clearTBtn) {
+                clearTBtn.onclick = async () => {
+                    try { await loadRemoteBookings(); showToast('Reservas actualizadas.'); }
+                    catch { showToast('No se pudieron actualizar las reservas.'); }
+                };
+            }
+
+            // Manejo de Servicios (Admin)
+            const addServiceForm = document.getElementById('addServiceForm');
+            if (addServiceForm) {
+                addServiceForm.onsubmit = async (e) => {
+                    e.preventDefault();
+                    const newSrv = {
+                        name: document.getElementById('srvName').value.trim(),
+                        price: parseInt(document.getElementById('srvPrice').value),
+                        duration: parseInt(document.getElementById('srvDuration').value),
+                        icon: document.getElementById('srvIcon').value,
+                        description: document.getElementById('srvDesc').value.trim()
+                    };
+                    try {
+                        const response = await fetch('/api/admin/services', {
+                            method: 'POST', credentials: 'same-origin', headers: { 'content-type': 'application/json' }, body: JSON.stringify(newSrv)
+                        });
+                        const data = await response.json();
+                        if (!response.ok) throw new Error(data.error || 'No se pudo guardar el servicio.');
+                        await loadRemoteServices();
+                    } catch (error) { showToast(error.message); return; }
+                    addServiceForm.reset();
+                    showToast("Nuevo servicio añadido");
+                };
+            }
+        }
+
+                function sendWhatsAppNotification(data) {
+            const phone = String(appState.config.barberPhone || '').replace(/\D/g, '');
+            if (!phone) {
+                showToast('WhatsApp del barbero aún no está configurado.');
+                return false;
+            }
+            const message = `*💈 SOLICITUD DE TURNO - YAGEL BARBER 💈*\n\n` +
+                            `🔖 *Código:* ${data.id}\n` +
+                            `👤 *Cliente:* ${data.clientName}\n` +
+                            `📱 *Teléfono:* ${data.clientPhone}\n` +
+                            `✂️ *Servicio:* ${data.service}\n` +
+                            `📅 *Fecha:* ${data.date}\n` +
+                            `⏰ *Hora:* ${data.time} hs\n` +
+                            `💳 *Seña (50%):* $${data.deposit}\n\n` +
+                            `🧾 *Estado:* Pendiente de verificación\n\n` +
+                            `Adjunto el comprobante de transferencia para confirmar el turno.`;
+
+            const encodedMsg = encodeURIComponent(message);
+            window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${encodedMsg}`, '_blank');
+            return true;
+        }
+
+        window.confirmTurno = async function(index) {
+            const item = appState.turnos[index];
+            const response = await fetch(`/api/admin/bookings/${encodeURIComponent(item.id)}`, {
+                method: 'PATCH', credentials: 'same-origin', headers: { 'content-type': 'application/json' },
+                body: JSON.stringify({ status: 'Confirmado' })
+            });
+            if (!response.ok) { showToast('No se pudo confirmar el turno.'); return; }
+            await loadRemoteBookings();
+            showToast("Turno verificado y confirmado");
+        };
+
+        window.openEditTurno = function(index) {
+            const t = appState.turnos[index];
+            document.getElementById('editTurnoIndex').value = index;
+            document.getElementById('editTurnoClientName').innerText = `Cliente: ${t.clientName}`;
+            document.getElementById('editTurnoDate').value = t.date;
+            document.getElementById('editTurnoTime').value = t.time;
+            editTurnoModal.classList.remove('hidden');
+        };
+
+                window.deleteTurno = async function(index) {
+                    const item = appState.turnos[index];
+                    const response = await fetch(`/api/admin/bookings/${encodeURIComponent(item.id)}`, {
+                        method: 'PATCH', credentials: 'same-origin', headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify({ status: 'Cancelado' })
+                    });
+                    if (!response.ok) { showToast('No se pudo cancelar la reserva.'); return; }
+                    await loadRemoteBookings();
+                    showToast("Reserva cancelada y horario liberado");
+                };
+
+                window.deleteService = async function(index) {
+                    if (confirm("¿Estás seguro de eliminar este servicio? Dejará de estar disponible para reservas.")) {
+                        const item = appState.services[index];
+                        const response = await fetch(`/api/admin/services/${item.id}`, {
+                            method: 'PATCH', credentials: 'same-origin', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ active: false })
+                        });
+                        if (!response.ok) { showToast('No se pudo quitar el servicio.'); return; }
+                        await loadRemoteServices();
+                        showToast("Servicio eliminado con éxito");
+                    }
+                };
+
+                window.deleteGalleryItem = function(index) {
+            if (confirm("¿Seguro que quieres eliminar esta imagen del portafolio?")) {
+                appState.gallery.splice(index, 1);
+                saveState();
+                showToast("Imagen eliminada de la galería");
+            }
+        };
+
+        function showToast(msg) {
+            toastMsg.innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 3500);
+        }
+    </script>
+</body>
+</html>
